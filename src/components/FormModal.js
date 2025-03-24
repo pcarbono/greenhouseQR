@@ -21,15 +21,13 @@ const FormModal = ({ show, onClose, onSave, user }) => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!name) newErrors.name = "Name is required";
-    if (!email) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = "Email is invalid";
+    if (!name) newErrors.name = "Location is required";
+    if (!email) newErrors.email = "Supplier is required";
+    if (!phone) {
+      newErrors.phone = "NextChange is required";
+    } else if (!/^\d{4}-\d{2}-\d{2}$/.test(phone)) {
+      newErrors.phone = "Date must be in format YYYY-MM-DD";
     }
-    if (!phone) newErrors.phone = "Phone is required";
-    else if (!/^\d{10}$/.test(phone))
-      newErrors.phone = "Phone must be 10 digits";
     return newErrors;
   };
 
@@ -47,7 +45,7 @@ const FormModal = ({ show, onClose, onSave, user }) => {
       <div className="bg-white p-4 rounded shadow-md w-full max-w-md">
         <h2 className="text-xl mb-4">{user ? "Edit User" : "Add User"}</h2>
         <div className="mb-4">
-          <label className="block text-sm font-semibold">Name</label>
+          <label className="block text-sm font-semibold">Location</label>
           <input
             type="text"
             value={name}
@@ -59,9 +57,9 @@ const FormModal = ({ show, onClose, onSave, user }) => {
           {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-semibold">Email</label>
+          <label className="block text-sm font-semibold">Supplier</label>
           <input
-            type="email"
+            type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className={`w-full p-2 border rounded ${
@@ -73,9 +71,9 @@ const FormModal = ({ show, onClose, onSave, user }) => {
           )}
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-semibold">Phone</label>
+          <label className="block text-sm font-semibold">Next Change</label>
           <input
-            type="text"
+            type="data"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className={`w-full p-2 border rounded ${
