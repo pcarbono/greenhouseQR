@@ -51,8 +51,8 @@ const UserDetail = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold">{user.name}</h1>
-      <p>Email: {user.email}</p>
-      <p>Teléfono: {user.phone}</p>
+      <p>Location: {user.email}</p>
+      <p>Next Change: {user.phone}</p>
 
       {/* Código QR
       <div className="mt-4">
